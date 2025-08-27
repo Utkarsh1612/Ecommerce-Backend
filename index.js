@@ -56,7 +56,7 @@ const getAllProducts = async () => {
   }
 };
 
-app.get("/", async (req, res) => {
+app.get("/api/products", async (req, res) => {
   try {
     const allProducts = await getAllProducts();
     if (allProducts.length) {
