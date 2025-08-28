@@ -36,7 +36,7 @@ const ProductSchema = new mongoose.Schema({
     },
     category: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Category",
+        ref: "ecom-category",
         requried: true,
     }
 },{
