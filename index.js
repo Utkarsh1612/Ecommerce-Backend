@@ -1,6 +1,12 @@
 const express = require("express");
 const initializeDatabase = require("./db/db.connect");
-const Product = require("./models/product.models");
+
+const Product = require("./models/product");
+const Category = require("./models/category");
+
+const CategroyController = require("./controllers/category.controller");
+const ProductController = require("./controllers/product.controller");
+
 const app = express();
 require("dotenv").config();
 
@@ -32,33 +38,39 @@ const newProduct = {
     "Fit : Modern regular fit for a sleek and flattering look.",
     "Surface : Luxuriously soft texture that feels gentle against the skin for all-day wear.",
   ],
-  category: "Men",
+  category: "68b007161fd567f51ce55c71",
 };
 
-const createProduct = async (newProduct) => {
-  try {
-    const product = new Product(newProduct);
-    const createProduct = await product.save();
-    console.log("created Product: ", createProduct);
-  } catch (error) {
-    console.log("Error in creating product", error);
+//ProductController.createProduct(newProduct);
+
+const categories = [
+  {
+    name: "Men",
+    description: "Clothing and accessories designed for men, including shirts, trousers, and footwear."
+  },
+  {
+    name: "Women",
+    description: "Fashion and accessories for women, featuring dresses, tops, and jewelry."
+  },
+  {
+    name: "Kids",
+    description: "Apparel and gear for children, including toys, clothes, and school supplies."
+  },
+  {
+    name: "Electronics",
+    description: "Latest gadgets and devices, such as smartphones, laptops, and headphones."
+  },
+  {
+    name: "Furniture",
+    description: "Home and office furniture, including sofas, tables, and storage solutions."
   }
-};
+];
 
-//createProduct(newProduct);
-
-const getAllProducts = async () => {
-  try {
-    const allProducts = await Product.find();
-    return allProducts;
-  } catch (error) {
-    console.log("Error in fetching all products", error);
-  }
-};
+//CategroyController.createCategory(categories);
 
 app.get("/api/products", async (req, res) => {
   try {
-    const allProducts = await getAllProducts();
+    const allProducts = await ProductController.getAllProducts();
     if (allProducts.length) {
       res.status(200).json({ data: { products: allProducts } });
     } else {
@@ -67,7 +79,7 @@ app.get("/api/products", async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ message: "Failed to get all products!", error: error.message });
+      .json({ message: "Failed to get all products!", error});
   }
 });
 
