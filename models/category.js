@@ -7,6 +7,7 @@ const CategorySchema = new mongoose.Schema({
     enum: ["Men", "Women", "Kids", "Electronics", "Furniture"],
   },
   description: String,
+  image: String,
 },{
   timestamps: true,
 });
