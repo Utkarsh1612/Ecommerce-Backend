@@ -18,3 +18,12 @@ exports.getAllProducts = async () => {
     console.log("Error in fetching all products", error);
   }
 };
+
+exports.getProductById = async (id) => {
+    try{
+        const product = await Product.findById(id);
+        return product;
+    }catch(error){
+        console.log("Error in fetching product by Id", error);
+    }
+}

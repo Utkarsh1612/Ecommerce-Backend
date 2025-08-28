@@ -83,6 +83,45 @@ app.get("/api/products", async (req, res) => {
   }
 });
 
+app.get("/api/products/:productId", async (req, res) => {
+  try{
+    const product = await ProductController.getProductById(req.params.productId);
+    if(product){
+      res.status(200).json({data: {product: product}});
+    }else{
+      res.status(404).json({message: "Product Not Found By Id", error});
+    }
+  }catch(error){
+    res.status(500).json({message: "Failed to get product by Id", error});
+  }
+});
+
+app.get("/api/categories", async (req, res) => {
+  try{  
+    const allCategories = await CategroyController.getAllCategories();
+    if(allCategories.length){
+      res.status(200).json({data: { categories: allCategories}});
+    }else{
+      res.status(404).json({message: "No Category Found!"});
+    }
+  }catch(error){
+    res.status(500).json({message: "Failed to fetch all categories", error});
+  }
+});
+
+app.get("/api/categories/:categoryId", async (req, res) => {
+  try{
+    const category = await CategroyController.getCategoryById(req.params.categoryId);
+    if(category){
+      res.status(200).json({data: {category: category}});
+    }else{
+      res.status(404).json({message: "Category Not Found By Id"});
+    }
+  }catch(error){
+    res.status(500).json({message: "Failed to fetch category by Id", error});
+  }
+})
+
 app.listen(PORT, () => {
   console.log("server is running on PORT:", PORT);
 });
