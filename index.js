@@ -24,24 +24,26 @@ app.use(cors(corsOption));
 
 const newProduct = {
   imageUrl:
-    "https://m.media-amazon.com/images/I/71LnycrT7qL._AC_UL480_FMwebp_QL65_.jpg",
-  title: "TAGDO Men's Regular Fit Casual Shirt (5171)",
+    "https://m.media-amazon.com/images/I/71BITpPSjML._SY741_.jpg",
+  title: "LG 8 Kg 5 Star Smart Washing Machine",
   rating: 4.0,
-  price: 1599,
-  discountedPrice: 389,
-  discountPercentage: 76,
-  size: ["S", "M", "L", "XL", "XXL"],
+  price: 28990,
+  discountedPrice: 19990,
+  discountPercentage: 31,
+  //size: ["128 GB", "256 GB", "512 GB"],
   description: [
-    "Fabric: Polyester, Designed to withstand daily wear and maintain its shape and color over time.",
-    "Versatile design : Ideal for casual outings, everyday wear for a stylish ensemble",
-    "Stylish color options : Choose from a selection of classic and contemporary colors to suit your preference.",
-    "Fit : Modern regular fit for a sleek and flattering look.",
-    "Surface : Luxuriously soft texture that feels gentle against the skin for all-day wear.",
+    "Fully-automatic top load washing machine with Inverter Motor and Smart wash technology: Affordable with great wash quality, Easy to use; Has both washing and drying functions.",
+    "Capacity 8.0 Kg: Suitable for large families.",
+    "Energy Star rating: 5 Star best in class efficiency; Smart Inverter Technology for up to 36 % energy savings; Energy consumption - 0.0085 KWh/kg/cycle & Water Consumption: 15.50 L/Kg/Cycle (Please refer BEE label for more information).",
+    "Manufacturer Warranty: 2 years on product and 10 years on motor (T&C Apply).",
+    "740 RPM: Higher spin speeds helps in faster wash and drying",
+    "Wash Programs: 08 No. of Programs – Normal: built-in sensor detects the weight of the clothes, calculating wash, rinse and, spin settings accordingly | Quick Wash : Use this programme to wash lightly soiled clothes for a short time | Gentle(Wool/Saree): this programme to wash delicate fabrics such as lingerie and woolens | Strong: this programme for heavily soiled durable garments such as overalls, jeans | Pre-wash+Normal: this programme to pretreat immediate stain without handwash | Rinse+: This program will run same as Normal course with one extra rinse for all water levels | Aqua Reserve | Tub Clean: This is a special function to clean inside the drum of your appliance",
+    "Drum / Pulsator type & Body material: TurboDrum enables the most powerful wash and removes the toughest dirt through a strong water stream of rotating drum and pulsator in the opposite direction | Semi Stainless Steel Drum | Panel information: POWER Button | Program Button | Extra Options and Functions | START/PAUSE Button | Cycle Status Indicator | Body Material - Steel"
   ],
-  category: "68b007161fd567f51ce55c71",
+  category: "68b007181fd567f51ce55c78",
 };
 
-//ProductController.createProduct(newProduct);
+ProductController.createProduct(newProduct);
 
 const categories = [
   {
