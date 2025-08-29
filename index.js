@@ -72,7 +72,7 @@ app.get("/api/products", async (req, res) => {
   try {
     const allProducts = await ProductController.getAllProducts();
     if (allProducts.length) {
-      res.status(200).json({ data: { products: allProducts } });
+      res.status(200).json({products: allProducts });
     } else {
       res.status(404).json({ message: "No Product Found!" });
     }
@@ -87,7 +87,7 @@ app.get("/api/products/:productId", async (req, res) => {
   try{
     const product = await ProductController.getProductById(req.params.productId);
     if(product){
-      res.status(200).json({data: {product: product}});
+      res.status(200).json({product: product});
     }else{
       res.status(404).json({message: "Product Not Found By Id", error});
     }
@@ -100,7 +100,7 @@ app.get("/api/categories", async (req, res) => {
   try{  
     const allCategories = await CategroyController.getAllCategories();
     if(allCategories.length){
-      res.status(200).json({data: { categories: allCategories}});
+      res.status(200).json({ categories: allCategories});
     }else{
       res.status(404).json({message: "No Category Found!"});
     }
@@ -113,7 +113,7 @@ app.get("/api/categories/:categoryId", async (req, res) => {
   try{
     const category = await CategroyController.getCategoryById(req.params.categoryId);
     if(category){
-      res.status(200).json({data: {category: category}});
+      res.status(200).json({category: category});
     }else{
       res.status(404).json({message: "Category Not Found By Id"});
     }
