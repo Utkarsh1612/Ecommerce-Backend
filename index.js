@@ -43,7 +43,7 @@ const newProduct = {
   category: "68b007181fd567f51ce55c78",
 };
 
-ProductController.createProduct(newProduct);
+//ProductController.createProduct(newProduct);
 
 const categories = [
   {
@@ -122,7 +122,20 @@ app.get("/api/categories/:categoryId", async (req, res) => {
   }catch(error){
     res.status(500).json({message: "Failed to fetch category by Id", error});
   }
-})
+});
+
+app.get("/api/products/category/:productCategory", async (req, res) => {
+  try{
+    const productsByCategory = await ProductController.findProductsByCategory(req.params.productCategory);
+    if(productsByCategory.length){
+      res.status(200).json({products: productsByCategory});
+    }else{
+      res.status(404).json({message: "No data Found!"});
+    }
+  }catch(error){
+    res.status(500).json({message: "Failed to load products by category" + error});
+  }
+});
 
 app.listen(PORT, () => {
   console.log("server is running on PORT:", PORT);

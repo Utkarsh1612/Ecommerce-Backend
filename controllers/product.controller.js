@@ -1,3 +1,4 @@
+const product = require("../models/product");
 const Product = require("../models/product");
 
 exports.createProduct = async (newProduct) => {
@@ -26,4 +27,15 @@ exports.getProductById = async (id) => {
     }catch(error){
         console.log("Error in fetching product by Id", error);
     }
+}
+
+exports.findProductsByCategory = async (category) => {
+  try{
+    console.log("category: ", category);
+    const products = await Product.find().populate({path: "category", match: {name: category}});
+    const filterdProducts = products.filter((product) => product.category != null);
+    return filterdProducts;
+  }catch(error){
+    console.log("error occured in fetching products by category" + error);
+  }
 }
